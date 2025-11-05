@@ -5,6 +5,7 @@ import vocabBooks from '../images/vocabBooks.png'
 import progressPot from '../images/progressPot.png'
 import dashboard from '../images/dashboard.png'
 import {useNavigate} from 'react-router-dom'         // Can also use <Link> from react-router-dom
+import homeBG from '../images/homeBG.jpg'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ const Home = () => {
   return (
 
       <div>
-         <div className='bg-cover bg-center bg-no-repeat w-full min-h-screen flex flex-wrap justify-center' style={{ backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.3), rgba(0,0,0,0.3)), url('/src/images/homeBG.jpg')" }}>
+         <div className='bg-cover bg-center bg-no-repeat w-full min-h-screen flex flex-wrap justify-center' style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.3), rgba(0,0,0,0.3)), url(${homeBG})` }}>
             
             <div className='relative w-150 h-110'>
                <img className=' absolute top-25 left-20  w-70 h-70 object-fit transition-transform duration-200 ease-in-out hover:scale-105 hover:-translate-y-3 custom-shadow' src={dashboard} />
