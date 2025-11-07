@@ -1,3 +1,3 @@
 # Runs the app
-[Click Here to Run the Project](https://e-commerce-frontend-project-one.vercel.app/)
+[Click Here to Run the Project](https://japanese-learning-website-nine.vercel.app/)
 
