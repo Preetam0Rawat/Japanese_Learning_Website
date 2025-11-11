@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getKanjiByLevel, getKanjiDetails } from "../api/index.jsx";
 import KanjiLayout from "../components/KanjiLayout.jsx";
-import inkStone from '../images/inkStone.png'
+import inkStone from '../images/inkstone.png'
 import tableBG from '../images/tableBG.png'
 import KanjiInfo from "../components/KanjiInfo.jsx";
 
