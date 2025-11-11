@@ -4,7 +4,7 @@ import Progress from '../models/progress.js'
 
 export const getAllKanji = async(req, res) =>{
     try {
-           const kanjis = await Kanji.find({}, "_id kanji")
+           const kanjis = await Kanji.find({}, "_id kanji meanings")
            return res.status(200).json(kanjis)
            
        }
@@ -37,20 +37,26 @@ export const getKanjiById = async(req, res) =>{
 export const getKanjiByJlptLevel = async(req, res) =>{
    try {
     const jlptLevel = parseInt(req.query.level); // e.g. 1, 2, 3, 4, 5
-
+    const page = parseInt(req.query.page) || 1; // default page 1
+    const limit = parseInt(req.query.limit) || 25; // default 25 kanjis per
     // Validation check
     if (![1, 2, 3, 4, 5].includes(jlptLevel)) {
       return res.status(400).json({ message: "Invalid JLPT level" });
     }
+    // Count total documents for that level
+       const totalKanjis = await Kanji.countDocuments({ jlpt: jlptLevel });
 
     // Find all kanji with matching jlpt value
-    const kanjis = await Kanji.find({ jlpt: jlptLevel }, "_id  kanji");
+ // Find with pagination
+    const kanjis = await Kanji.find({ jlpt: jlptLevel }, "_id kanji meanings")
+      .skip((page - 1) * limit)
+      .limit(limit);
 
     if (kanjis.length === 0) {
       return res.status(404).json({ message: "No kanji found for this JLPT level" });
     }
 
-    res.json(kanjis);
+    res.json({total : totalKanjis, totalPages:Math.ceil(totalKanjis/limit), currentPage : page , kanjis});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -170,7 +176,7 @@ export const getProgress = async(req, res) =>{
     const { type, status } = req.query;
 
     if (!studentId) {
-      return res.status(400).json({ message: 'studentId is required' });
+      return res.json({ message: 'studentId is required' });
     }
 
     // Build query
@@ -217,3 +223,14 @@ export const removeFromProgress = async(req, res) =>{
   }
 }
 
+
+
+export const reportBug = async(req,res) =>{
+  try {
+       const {bug} = req.body;
+       return res.status(200).json({mssg : "Bug reported Sucessfully", bug})
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+}
