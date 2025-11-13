@@ -1,43 +1,78 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { addStatusToProgress } from '../api';
+import { addStatusToProgress, getProgressStatus, removeProgressStatus } from '../api';
 
 const KanjiInfo = ({ info }) => {
-
   const [selected, setSelected] = useState("Untracked");
+  const token = localStorage.getItem("token")
 
-  const addToProgress = async (status) => {
-    try{
-      const response = addStatusToProgress(status, studentId)
-      console.log(response)
-    }catch (error) {
-         console.log("error")
-     }
-  }
 
-  const handleSelect = (status) => {
+  useEffect(() => {
+    const fetchStatus = async () => {
+      if (!token) {
+        setSelected('Untracked');
+        return;
+      }
+      try {
+        const kanjiId = info._id
+        const res = await getProgressStatus(kanjiId, token);
+        setSelected(res.data.status || 'Untracked')
+      } catch (error) {
+        console.log('Error fetching status :', error)
+      }
+    }
+    fetchStatus();
+  }, [info._id, token]);
+
+
+
+  const handleSelect = async (status) => {
+    if (!token) {
+      alert('Please Sign up to use this functionality')
+      return;
+    }
     setSelected(status);
 
     // ✅ Perform actions depending on what is selected
-    if (status === "Learning" || "Learned") {
+    if (status === "Learning" || status === "Learned") {
       console.log("User is learning this kanji.");
-      addToProgress(status)
+      await addToProgress(status)
     }
     else {
-      removeFromProgress(status)
       console.log("User stopped tracking this kanji.");
+      await removeFromProgress()
     }
   };
 
+  const addToProgress = async (status) => {
+    try {
+      console.log(info._id, token)
+            const kanjiId = info._id
+      const response = await addStatusToProgress(status, kanjiId, token)
+      console.log(response)
+    } catch (error) {
+      console.log("error is : ", error)
+    }
+  }
+
+  const removeFromProgress = async () => {
+    try {
+      const kanjiId = info._id
+      const response = await removeProgressStatus(kanjiId, token);
+      console.log('Removed progress:', response.data);
+    } catch (error) {
+      console.log("Error removing progress:", error);
+    }
+  }
 
 
   return (
-    <div className='flex flex-col flex-wrap  text-black rounded-2xl  gap-4 mx-auto    bg-slate-100'>
+    <div className='flex flex-col flex-wrap  text-black rounded-2xl  gap-4 mx-auto'>
       {/* {info.kanji}{info.jlpt} */}
       <div className=' p-6 rounded-lg text-8xl '>{info.kanji}</div>
 
 
-      <div className=' flex justify-between p-5 font-semibold text-xl mt-5  bg-slate-600'>
+      <div className=' flex justify-between p-5 font-semibold text-xl mt-5'>
         <div className=' flex flex-col rounded-lg gap-2'>
           <div className=' font-semibold'>
             <span className=''>Newspaper Frequency : </span>
@@ -59,23 +94,23 @@ const KanjiInfo = ({ info }) => {
       </div>
 
 
-      <div className=' flex justify-around text-xl font-semibold p-6 mt-3   bg-slate-500'>
+      <div className=' flex justify-around text-xl font-semibold p-6 mt-3 '>
         <div className=''>
           <h1 className='underline'>Kunyomi readings</h1>
-          {info.kun_readings?.map((m, i) => (
+          {info.kun_readings?.slice(0,8).map((m, i) => (
             <div key={i}>{m}</div>
           ))
           }
         </div>
         <div className=''>
           <h1 className='underline'>Meanings</h1>
-          {info.meanings.map((m, i) => (
+          {info.meanings?.slice(0,8).map((m, i) => (
             <div key={i}>{m}</div>
           ))}
         </div>
         <div className=''>
           <h1 className='underline'>Onyomi readings</h1>
-          {info.on_readings.map((m, i) => (
+          {info.on_readings?.slice(0,8).map((m, i) => (
             <div key={i}>{m}</div>
           ))}
         </div>
@@ -88,16 +123,16 @@ const KanjiInfo = ({ info }) => {
         <div className=''>Untracked</div>
       </div> */}
 
-      <div className="flex justify-around text-xl font-semibold p-2 mt-3 bg-slate-300 rounded-xl">
+      <div className="flex justify-around text-xl font-semibold p-2 mt-3 rounded-xl">
         {["Learning", "Learned", "Untracked"].map((status) => (
           <div
             key={status}
             onClick={() => handleSelect(status)}
             className={`flex items-center gap-2 cursor-pointer px-3 py-1 rounded-full transition 
-            ${selected === status ? "bg-amber-400 text-white" : "bg-white text-gray-700"}`}
+            ${selected === status ? "bg-purple-500 text-white" : "bg-slate-700 text-white"}`}
           >
             <div
-              className={`w-4 h-4 rounded-full border-2 ${selected === status ? "border-white bg-green-500" : "border-gray-400"
+              className={`w-4 h-4 rounded-full border-2 ${selected === status ? "border-white bg-black" : "border-gray-400 bg-white"
                 }`}
             ></div>
             <span>{status}</span>

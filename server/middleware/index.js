@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 export const auth = async(req , res , next) =>{
     try{         
         const authHeader = req.header('Authorization')                  
-        if(!authHeader || authHeader.split(' ')[1] === 'null'){                          
+        if(!authHeader || authHeader.split(' ')[1] === 'null'){   
             return res.status(401).json({mssg : "You are unauthorized"})  //Unauthorized
         }
 

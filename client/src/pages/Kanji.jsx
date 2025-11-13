@@ -43,8 +43,6 @@ const Kanji = () => {
     const handleKanjiClick = async (kanjiId) => {
         try {
             const response = await getKanjiDetails(kanjiId)
-            console.log("reached in click kanji")
-             console.log(response.data)
             setKanjiDetails(response.data)
         } catch (error) {
             alert("error loading kanji details")
@@ -61,7 +59,7 @@ const Kanji = () => {
 
                     {/* Left side  */}
                     <div className='w-180 h-200 flex flex-col relative'>
-                        <h1 className=' text-white text-5xl text-center'>KANJI LIST</h1>
+                        <h1 className=' text-white text-5xl text-center'>KANJI LIST - N{jlptLevel}</h1>
                         <div className='flex flex-wrap justify-around gap-6 mt-10 ml-5 mr-5 h-160'>
                             {kanjis.map((kanji) => (
                                 <KanjiLayout key={kanji._id} data={kanji} onClick={() => handleKanjiClick(kanji._id)} />
@@ -86,13 +84,13 @@ const Kanji = () => {
                     </div>
                 </div>
 
-                <div className=" absolute right-4 flex flex-col justify-center gap-4 pt-10 h-screen">
+                <div className=" absolute left-8 flex flex-col justify-center gap-8 pt-6 h-screen">
                     {[5, 4, 3, 2, 1].map((level) => (
                         <button
                             key={level}
-                            className={`w-20 h-20 text-xl font-semibold rounded-full border ${jlptLevel === level
-                                ? "bg-amber-600 text-white"
-                                : "bg-white text-black hover:bg-gray-200"
+                            className={`w-20 h-20 text-xl font-semibold rounded-[35px]  border-4 ${jlptLevel === level
+                                ? "bg-violet-600 text-white"
+                                : "bg-brown text-black hover:backdrop-brightness-50"
                                 }`}
                             onClick={() => updateQuery(level, 1)}
                         >
