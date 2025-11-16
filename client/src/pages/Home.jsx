@@ -14,7 +14,7 @@ const Home = () => {
    return (
 
       <div>
-         <div className='flex flex-wrap  bg-no-repeat bg-bottom h-screen w-full sm:h-screen sm:bg-cover sm:bg-center' style={{ backgroundImage: `url(${homeBG})` }}>
+         <div className='flex flex-wrap  bg-no-repeat bg-bottom h-dvh w-full sm:h-screen sm:bg-cover sm:bg-center' style={{ backgroundImage: `url(${homeBG})` }}>
 
 
 
