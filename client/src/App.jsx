@@ -7,6 +7,7 @@ import Progress from './pages/Progress.jsx'
 import ReportBug from './pages/ReportBug.jsx'
 import Signup from './pages/Signup.jsx'
 import Signin from './pages/Signin.jsx'
+import OverView from './pages/OverView.jsx'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <BrowserRouter>
        <Routes>
          <Route path = '/' element = {<Home/>} />
+         <Route path = '/overview' element = {<OverView/>} />
          <Route path = '/kanji' element = {<Kanji/>} /> 
          <Route path = '/vocabulary' element = {<Vocabulary/>} />
          <Route path = '/progress' element = {<Progress/>} /> 

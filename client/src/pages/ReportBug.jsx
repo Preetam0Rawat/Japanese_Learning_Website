@@ -26,7 +26,7 @@ const ReportBug = () => {
 
   return (
     <div className="flex justify-center items-center h-screen  bg-cover bg-center" style={{background : `url(${reportBG})`}}>
-      <div className=" w-[80vw] h-[70vh]   sm:w-[50vw] sm:h-[65vh] p-6 rounded-2xl shadow-lg backdrop-blur-2xl">
+      <div className=" w-[80vw] h-[70vh]   lg:w-[50vw] sm:h-[65vh] p-6 rounded-2xl shadow-lg backdrop-blur-2xl">
        
         <h2 className="text-3xl font-semibold text-orange-400 mb-4 text-center">
            REPORT BUG

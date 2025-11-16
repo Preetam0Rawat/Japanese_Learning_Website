@@ -13,7 +13,7 @@ const Vocabulary = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const jlptLevel = parseInt(searchParams.get("level")) || 5
   const currentPage = parseInt(searchParams.get("page")) || 1
-  const limit = 5;
+  const limit = 6;
 
 
 
@@ -47,8 +47,8 @@ const Vocabulary = () => {
       </div>
 
       <div className=' relative w-full h-screen sm:bg-contain  bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${vocabBG})` }}>
-        <div className='top-[8vh] left-[36vw] absolute bg-pink-500 '>
-          <h1 className='bg-lime-600 text-center font-semibold text-4xl mb-5 mt-15'>Vocaublary JLPT-N{jlptLevel}</h1>
+        <div className='top-[5vh] left-[36vw] absolute'>
+          <h1 className='w-full font-semibold text-5xl mb-5 ml-15'>Vocaublary JLPT-N{jlptLevel}</h1>
           <div className='flex flex-col gap-4'>
             {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))}
           </div>

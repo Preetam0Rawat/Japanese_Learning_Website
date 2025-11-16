@@ -46,13 +46,13 @@ const Signup = () => {
 
     <div className="relative w-full h-screen overflow-hidden flex  justify-center items-center">
       <img src={signupBG} alt="background" className="absolute -z-10 inset-0 w-full h-full object-cover blur-sm" />
-      <div className="relative  sm:rounded-[150px]  sm:w-[40vw]  w-[80vw] sm:h-200 h-200 rounded-[90px]">
+      <div className="relative w-[75vw] h-160 rounded-[90px] sm:w-[75vw] sm:h-170 sm:rounded-[50px] md:w-[50vw]   ">
        
-        <div className="absolute sm:rounded-[150px] sm:px-20 sm:py-10 inset-2 border-4 border-green-500  rounded-[90px]  px-10 py-8 flex flex-col items-center">
+        <div className="absolute flex flex-col items-center inset-2 border-4 border-green-500  rounded-[90px]  px-10 py-8  sm:rounded-[120px] sm:px-20 sm:py-10 ">
           
           
           <h1 className='text-[40px] font-bold text-center'>SIGN UP</h1>
-          <div className="flex flex-col items-center md:w-[40vw] w-[80vw] justify-evenly h-[70%] gap-3 mt-7">
+          <div className="flex flex-col items-center md:w-[45vw] w-[80vw] justify-evenly h-[70%] gap-3 mt-7">
             <input
               type="text"
               id="name"

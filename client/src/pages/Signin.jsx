@@ -46,8 +46,8 @@ const Signin = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden flex  justify-center items-center">
       <img src={signinBG} alt="background" className="absolute -z-10 inset-0 w-full h-full object-cover blur-sm" />
-      <div className="relative  sm:rounded-[150px]  sm:w-[40vw]  w-[80vw] sm:h-200 h-200 rounded-[90px]">
-        <div className="absolute sm:rounded-[150px] sm:px-20 sm:py-10 inset-2 border-4 border-green-500  rounded-[90px]  px-10 py-8 flex flex-col items-center">
+      <div className="relative w-[75vw] h-160 rounded-[90px] sm:w-[75vw] sm:h-170 sm:rounded-[50px] md:w-[50vw]   ">
+        <div className="absolute flex flex-col items-center inset-2 border-4 border-green-500  rounded-[90px]  px-10 py-8  sm:rounded-[120px] sm:px-20 sm:py-10 ">
 
 
           <h1 className='text-[40px] font-bold text-center'>SIGN IN</h1>
@@ -94,13 +94,13 @@ const Signin = () => {
             </button>
 
           </div>
-          {token ? (<div className='flex  sm:w-[20vw] justify-end items-center text-center mt-20 border-2 px-4 rounded-full w-[30vw] bg-yellow-300'>
+          {token ? (<div className='flex justify-end items-center text-center  bg-yellow-300 mt-20 border-2 px-2 rounded-3xl w-[50vw] sm:w-[50vw] md:w-[30vw] '>
             <div className='flex-2 font-semibold text-xl'>You are already signed in</div>
             <div className='flex-1'>
               <button
                 type="submit"
                 onClick={handleSignout}
-                className="w-full my-3 mx-2 bg-white text-black text-lg font-semibold rounded-full border-2 hover:bg-green-400 transition"
+                className="w-full my-3 bg-white text-black text-lg font-semibold rounded-full border-2 hover:bg-green-400 transition"
               >
                 SIGN OUT
               </button>

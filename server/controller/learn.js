@@ -163,7 +163,7 @@ export const updateProgressStatus = async (req, res) => {
     }
 
     // Build the search filter dynamically
-    const filter = { studentId };
+    const filter = { studentId }; 
     if (kanjiId) filter.kanjiId = kanjiId;
     if (vocabularyId) filter.vocabularyId = vocabularyId;
 

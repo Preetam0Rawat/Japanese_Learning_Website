@@ -14,8 +14,7 @@ const KanjiInfo = ({ info }) => {
         return;
       }
       try {
-        const kanjiId = info._id
-        const res = await getProgressStatus(kanjiId, token);
+        const res = await getProgressStatus({kanjiId : info._id }, token);
         setSelected(res.data.status || 'Untracked')
       } catch (error) {
         console.log('Error fetching status :', error)
@@ -35,7 +34,6 @@ const KanjiInfo = ({ info }) => {
 
     // ✅ Perform actions depending on what is selected
     if (status === "Learning" || status === "Learned") {
-      console.log("User is learning this kanji.");
       await addToProgress(status)
     }
     else {
@@ -47,8 +45,8 @@ const KanjiInfo = ({ info }) => {
   const addToProgress = async (status) => {
     try {
       console.log(info._id, token)
-            const kanjiId = info._id
-      const response = await addStatusToProgress(status, kanjiId, token)
+      const kanjiId = info._id
+      const response = await addStatusToProgress({status, kanjiId}, token)
       console.log(response)
     } catch (error) {
       console.log("error is : ", error)
@@ -58,7 +56,7 @@ const KanjiInfo = ({ info }) => {
   const removeFromProgress = async () => {
     try {
       const kanjiId = info._id
-      const response = await removeProgressStatus(kanjiId, token);
+      const response = await removeProgressStatus({kanjiId}, token);
       console.log('Removed progress:', response.data);
     } catch (error) {
       console.log("Error removing progress:", error);

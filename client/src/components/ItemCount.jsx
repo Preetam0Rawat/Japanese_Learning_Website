@@ -25,8 +25,8 @@ const ItemCount = () => {
         }
     }
     return ( 
-        <div className='  p-3 font-semibold'>
-            <h1 className='underline font-extrabold mb-4 text-center'>Items Learned</h1>
+        <div className='text-[75%] pt-2 px-2 font-semibold sm:text-[100%] md:text-[90%]'>
+            <h1 className='underline text-center pb-2 font-bold'>Items Learned</h1>
             
             { token? (<>
             <h1>Kanji : {data.learnedKanji}/{data.totalKanji}</h1>
