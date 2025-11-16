@@ -34,33 +34,58 @@ const Vocabulary = () => {
   }, [jlptLevel, currentPage]);
 
   const updateQuery = (level, page) => {
-        setSearchParams({ level, page });
-    };
+    setSearchParams({ level, page });
+  };
 
   return (
-    // <div className='w-full h-screen bg-cover bg-center' style = {{backgroundImage : `url(${tableBG})`}}>
-    //   This is vocab
-    // </div>
     <>
-      <div className='absolute -z-2 w-full h-screen'>
+      <div className='absolute -z-2 w-full h-dvh'>
         <img src={tableBG} alt="table BG" className='object-fill w-full h-screen' />
       </div>
+      <div className="absolute -z-1 hidden sm:block sm:left-[25%]  sm:w-[60%] xl:w-[800px] xl:left-[30%]  h-dvh">
+        <img src={vocabBG} alt="notebook" className="w-full h-full" />
+        <p className="absolute top-[5%] text-center text-3xl  w-full font-bold">Vocaublary JLPT-N{jlptLevel}</p>
 
-      <div className=' relative w-full h-screen sm:bg-contain  bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${vocabBG})` }}>
-        <div className='top-[5vh] left-[36vw] absolute'>
-          <h1 className='w-full font-semibold text-5xl mb-5 ml-15'>Vocaublary JLPT-N{jlptLevel}</h1>
-          <div className='flex flex-col gap-4'>
+
+        <div className='sm:absolute w-[75%] top-[10%] left-[20%] text-center flex flex-col gap-3'>
+          {/* <div className='flex flex-col gap-3 bg-black'> */}
             {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))}
-          </div>
+          {/* </div> */}
+        </div>
+
+
+        {/* Pagination for desktop*/}
+        <div className=" sm:absolute sm:bottom-12 w-full sm:left-1/2 sm:-translate-x-1/2 flex justify-center gap-4">
+          <button
+            className="px-4 py-2 bg-[#A0522D]/90  cursor-pointer rounded-lg disabled:opacity-40 font-semibold"
+            onClick={() => updateQuery(jlptLevel, currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+
+          <span className="text-xl font-semibold text-black">
+            Page {currentPage} / {totalPages}
+          </span>
+
+          <button
+            className="px-4 py-2 bg-[#A0522D]/90  cursor-pointer rounded-lg disabled:opacity-40 font-semibold"
+            onClick={() => updateQuery(jlptLevel, currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+
         </div>
       </div>
 
+      <h1 className="font-bold text-4xl text-center sm:hidden">VOCABULAY</h1>
       {/* JLPT Levels buttons */}
-      <div className="absolute  flex sm:left-30 sm:top-40  sm:flex-col  sm:justify-center top-1 sm:w-auto sm:gap-8 justify-evenly w-full  pt-6">
+      <div className="justify-evenly w-full flex pt-6 pb-6 sm:absolute  sm:left-[10%] sm:top-40  sm:flex-col  sm:justify-center  sm:w-auto sm:gap-8 ">
         {[5, 4, 3, 2, 1].map((level) => (
           <button
             key={level}
-            className={`w-20 h-20 text-xl font-semibold rounded-[35px]  border-4 ${jlptLevel === level
+            className={`cursor-pointer font-semibold border-2 sm:border-4 w-15 h-15 rounded-4xl sm:w-20 sm:h-20 sm:text-xl sm:rounded-[35px]   ${jlptLevel === level
               ? "bg-violet-600 text-white"
               : "bg-brown text-black hover:backdrop-brightness-50"
               }`}
@@ -71,13 +96,23 @@ const Vocabulary = () => {
         ))}
       </div>
 
-      {/* Add Status */}
-      <div className="absolute  top-1 right-1 bg-lime-600">
-       
+      <div className=' relative w-screen sm:hidden'>
+        <div className='sm:absolute w-full'>
+          <div className='flex flex-col gap-3 bg-black'>
+            {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))}
+          </div>
+        </div>
       </div>
 
-      {/* Pagination */}
-      <div className=" absolute left-1/3 bottom-15 sm:left-1/2 sm:-translate-x-1/2 flex justify-center gap-3 mt-10">
+
+
+      {/* Add Status */}
+      <div className="absolute  top-1 right-1 bg-lime-600">
+
+      </div>
+
+      {/* Pagination- for mobile */}
+      <div className=" sm:hidden flex justify-center gap-4 mt-3">
         <button
           className="px-4 py-2 bg-[#A0522D]/90  rounded-lg disabled:opacity-40 font-semibold"
           onClick={() => updateQuery(jlptLevel, currentPage - 1)}
@@ -86,12 +121,12 @@ const Vocabulary = () => {
           Prev
         </button>
 
-        <span className="text-xl font-semibold text-black">
+        <span className="text-xl font-semibold text-black ">
           Page {currentPage} / {totalPages}
         </span>
 
         <button
-          className="px-4 py-2 bg-[#A0522D]/90  rounded-lg disabled:opacity-40 font-semibold"
+          className="px-4 py-2 bg-[#A0522D]/90  cursor-pointer   rounded-lg disabled:opacity-40 font-semibold"
           onClick={() => updateQuery(jlptLevel, currentPage + 1)}
           disabled={currentPage === totalPages}
         >

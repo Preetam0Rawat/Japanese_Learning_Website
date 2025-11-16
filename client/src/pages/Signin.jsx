@@ -44,7 +44,7 @@ const Signin = () => {
 
 
   return (
-    <div className="relative w-full h-screen overflow-hidden flex  justify-center items-center">
+    <div className="relative w-full h-dvh overflow-hidden flex  justify-center items-center">
       <img src={signinBG} alt="background" className="absolute -z-10 inset-0 w-full h-full object-cover blur-sm" />
       <div className="relative w-[75vw] h-160 rounded-[90px] sm:w-[75vw] sm:h-170 sm:rounded-[50px] md:w-[50vw]   ">
         <div className="absolute flex flex-col items-center inset-2 border-4 border-green-500  rounded-[90px]  px-10 py-8  sm:rounded-[120px] sm:px-20 sm:py-10 ">

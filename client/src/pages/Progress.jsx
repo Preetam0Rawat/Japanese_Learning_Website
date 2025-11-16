@@ -12,7 +12,7 @@ const Progress = () => {
   return (
     !token ? (
       <>
-        <div className=' absolute -z-1 h-screen w-full bg-cover bg-center bg-no-repeat blur-md' style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className=' absolute -z-1 h-dvh w-full bg-cover bg-center bg-no-repeat blur-md' style={{ backgroundImage: `url(${bgImage})` }}>
         </div>
         <div className='flex justify-center items-center h-screen'>
           <div className=' bg-white/50  border-2 border-white rounded-4xl p-5 text-center flex flex-col  items-center m-5'>

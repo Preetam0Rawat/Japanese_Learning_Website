@@ -63,33 +63,43 @@ const VocabLayout = ({ data }) => {
 
 
   return (<>
-    <div className='bg-[#cd853f]'>
-     
-      <div className="flex font-semibold p-2 bg-white/85 rounded-2xl shadow-md  justify-around  items-start sm:w-150">
-       <div className="flex flex-col flex-1">
-          <p className="text-2xl text-gray-900">{data.word}</p>
-          <p className="text-sm text-gray-500">{data.furigana}</p>
+    <div className='bg-[#cd853f] '>
+
+      <div className="sm:flex  p-3 items-start font-semibold rounded-2xl shadow-md bg-white/85  "> 
+        {/*left sm:left */}
+        <div className='flex sm:flex-3'>
+          <div className="flex flex-col flex-1 items-start">
+            <p className="text-xl  text-gray-900">{data.word}</p>
+            <p className="text-sm text-gray-500">{data.furigana}</p>
+          </div>
+
+          {/*right sm:center */}
+          <div className="flex flex-col flex-2 items-start">
+            <p className="text-green-600 text-sm">JLPT: N{data.jlpt}</p>
+            <p className="text-gray-800 text-left">Meanings : {data.meaning}</p>
+          </div>
+
         </div>
-        <div className="flex flex-col flex-2">
-          <p className="text-green-600 text-sm">JLPT: N{data.jlpt}</p>
-          <p className="text-gray-800">Meanings : {data.meaning}</p>
-        </div>
-        <div className="flex flex-col  justify-around text-sm font-semibold rounded-xl gap-1 flex-1">
+
+        {/*  bottom sm:right */}
+        <div className="flex sm:flex-col  sm:flex-1 justify-around text-sm font-semibold rounded-xl gap-1">
           {["Learning", "Learned", "Untracked"].map((status) => (
             <div
               key={status}
               onClick={() => handleSelect(status)}
-              className={`w-28 flex items-center gap-2 cursor-pointer px-2 py-1  rounded-full transition 
+              className={`sm:w-28 flex items-center gap-2 cursor-pointerpx-2 sm:py-1  rounded-full transition  cursor-pointer
               ${selected === status ? "bg-[#cd853f] text-white" : "bg-[#cd853f]/40 text-white"}`}
             >
               <div
-                    className={`w-4 h-4 rounded-full border-2 ${selected === status ? "border-white bg-[#644117]" : "border-gray-400 bg-white"
+                className={`w-4 h-4 rounded-full border-2 ${selected === status ? "border-white bg-[#644117]" : "border-gray-400 bg-white"
                   }`}
               ></div>
               <span>{status}</span>
             </div>
           ))}
         </div>
+
+
       </div>
 
     </div>
@@ -98,3 +108,45 @@ const VocabLayout = ({ data }) => {
 }
 
 export default VocabLayout
+
+
+
+
+
+  // <div className='bg-[#cd853f] w-full'>
+
+  //     <div className="sm:flex sm:flex-wrap sm:justify-between p-3 items-start font-semibold rounded-2xl shadow-md bg-white/85   sm:p-2 sm:w-150"> 
+  //       <div className='flex'>
+  //         <div className="flex flex-col flex-1 sm:flex-1">
+  //           <p className="text-xl sm:text-2xl text-gray-900">{data.word}</p>
+  //           <p className="text-sm text-gray-500">{data.furigana}</p>
+  //         </div>
+
+  //         <div className="flex flex-col flex-1  sm:flex-2">
+  //           <p className="text-green-600 text-sm">JLPT: N{data.jlpt}</p>
+  //           <p className="text-gray-800 ">Meanings : {data.meaning}</p>
+  //         </div>
+
+  //       </div>
+
+  //       <div className="flex sm:flex-col  flex-1 justify-around text-sm font-semibold rounded-xl gap-1">
+  //         {["Learning", "Learned", "Untracked"].map((status) => (
+  //           <div
+  //             key={status}
+  //             onClick={() => handleSelect(status)}
+  //             className={`sm:w-28 flex items-center gap-2 cursor-pointerpx-2 sm:py-1  rounded-full transition 
+  //             ${selected === status ? "bg-[#cd853f] text-white" : "bg-[#cd853f]/40 text-white"}`}
+  //           >
+  //             <div
+  //               className={`w-4 h-4 rounded-full border-2 ${selected === status ? "border-white bg-[#644117]" : "border-gray-400 bg-white"
+  //                 }`}
+  //             ></div>
+  //             <span>{status}</span>
+  //           </div>
+  //         ))}
+  //       </div>
+
+
+  //     </div>
+
+  //   </div>
