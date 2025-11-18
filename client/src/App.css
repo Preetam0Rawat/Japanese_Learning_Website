@@ -12,3 +12,14 @@
 .animate-spin-slow {
   animation: spin-slow 4s linear infinite;
 }
+
+.myScrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.myScrollbar::-webkit-scrollbar-track {
+  background: #fcfbfbef;
+}
+.myScrollbar::-webkit-scrollbar-thumb {
+  background-color: #df950c;
+  border-radius: 9999px;
+}

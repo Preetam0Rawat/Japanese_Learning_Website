@@ -65,14 +65,15 @@ const KanjiInfo = ({ info }) => {
 
 
   return (
-    <div className='flex flex-col flex-wrap  text-black rounded-2xl  gap-4 mx-auto'>
+    <div className='flex flex-col flex-wrap  text-black lg:rounded-2xl  lg:gap-4 lg:mx-auto'>
+      
       {/* {info.kanji}{info.jlpt} */}
-      <div className=' p-6 rounded-lg text-8xl '>{info.kanji}</div>
+      <div className='text-5xl my-6 lg:p-6 lg:rounded-lg  lg:text-8xl '>{info.kanji}</div>
 
 
-      <div className=' flex justify-between p-5 font-semibold text-xl mt-5'>
-        <div className=' flex flex-col rounded-lg gap-2'>
-          <div className=' font-semibold'>
+      <div className=' flex justify-between text-sm px-3 lg:p-5 font-semibold lg:text-xl lg:mt-5'>
+        <div className=' flex flex-col rounded-lg lg:gap-2'>
+          <div className=' lg:font-semibold'>
             <span className=''>Newspaper Frequency : </span>
             <span>{info.freq_mainichi_shinbun}</span>
           </div>
@@ -92,17 +93,17 @@ const KanjiInfo = ({ info }) => {
       </div>
 
 
-      <div className=' flex justify-around text-xl font-semibold p-6 mt-3 '>
+      <div className=' flex justify-around px-9 text-sm lg:text-xl font-semibold lg:p-6 mt-7 '>
         <div className=''>
           <h1 className='underline'>Kunyomi readings</h1>
-          {info.kun_readings?.slice(0,8).map((m, i) => (
+          {info.kun_readings?.slice(0,5).map((m, i) => (
             <div key={i}>{m}</div>
           ))
           }
         </div>
         <div className=''>
           <h1 className='underline'>Meanings</h1>
-          {info.meanings?.slice(0,8).map((m, i) => (
+          {info.meanings?.slice(0,5).map((m, i) => (
             <div key={i}>{m}</div>
           ))}
         </div>
@@ -121,22 +122,24 @@ const KanjiInfo = ({ info }) => {
         <div className=''>Untracked</div>
       </div> */}
 
-      <div className="flex justify-around text-xl font-semibold p-2 mt-3 rounded-xl">
+      <div className="flex justify-around text-sm  lg:text-xl font-semibold lg:p-2 mt-5 rounded-xl">
         {["Learning", "Learned", "Untracked"].map((status) => (
           <div
             key={status}
             onClick={() => handleSelect(status)}
-            className={`flex items-center gap-2 cursor-pointer px-3 py-1 rounded-full transition 
+            className={`flex items-center gap-2 cursor-pointer px-2 lg:px-3 py-1 rounded-full transition 
             ${selected === status ? "bg-purple-500 text-white" : "bg-slate-700 text-white"}`}
           >
             <div
-              className={`w-4 h-4 rounded-full border-2 ${selected === status ? "border-white bg-black" : "border-gray-400 bg-white"
+              className={`w-2 h-2 lg:w-4 l:gh-4 rounded-full border-2 ${selected === status ? "border-white bg-black" : "border-gray-400 bg-white"
                 }`}
             ></div>
             <span>{status}</span>
           </div>
         ))}
       </div>
+
+
     </div>
 
     //  <div className="flex flex-col bg-slate-900 text-white rounded-2xl shadow-lg p-4 max-w-md mx-auto gap-4 sm:max-w-lg">
