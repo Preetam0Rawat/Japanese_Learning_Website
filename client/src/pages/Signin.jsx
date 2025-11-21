@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signin } from '../api'
 import signinBG from '../images/signBG.jpg'
+import { FcUndo } from "react-icons/fc";
+
 
 const Signin = () => {
 
@@ -112,6 +114,11 @@ const Signin = () => {
 
 
       </div>
+         <div className="absolute left-15 top-10 hidden sm:block">
+               <Link to="/home">
+                 <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
+               </Link>
+             </div>
     </div>
   )
 }

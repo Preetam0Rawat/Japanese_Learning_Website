@@ -5,6 +5,9 @@ import tableBG from '../images/tableBG.png'
 import vocabBG from '../images/vocab.png'
 import { getVocabByLevel } from "../api";
 import VocabLayout from "../components/VocabLayout";
+import { FcUndo } from "react-icons/fc";
+import { Link } from "react-router-dom";
+
 
 const Vocabulary = () => {
 
@@ -77,6 +80,12 @@ const Vocabulary = () => {
           </button>
 
         </div>
+      </div>
+
+        <div className="absolute left-15 top-10 hidden sm:block">
+        <Link to="/home">
+          <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
+        </Link>
       </div>
 
       <h1 className="font-bold text-4xl text-center sm:hidden">VOCABULAY</h1>
