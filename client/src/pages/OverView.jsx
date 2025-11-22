@@ -8,7 +8,7 @@ import vocabBooks from '../images/vocabBooks.png'
 import progressPot from '../images/progressPot.png'
 import career from '../images/career.png'
 import music from '../images/music.png'
-import japaneseCulture from '../images/culture.png'
+import japaneseCulture from '../images/japaneseCulture.png'
 import Features from '../components/features'
 import WhyJapanese from '../components/WhyJapanese'
 const OverView = () => {
