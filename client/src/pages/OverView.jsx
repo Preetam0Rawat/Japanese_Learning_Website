@@ -8,7 +8,7 @@ import vocabBooks from '../images/vocabBooks.png'
 import progressPot from '../images/progressPot.png'
 import career from '../images/career.png'
 import music from '../images/music.png'
-import culture from '../images/culture.png'
+import japaneseCulture from '../images/culture.png'
 import Features from '../components/features'
 import WhyJapanese from '../components/WhyJapanese'
 const OverView = () => {
@@ -53,7 +53,7 @@ const OverView = () => {
         {/* Why Japanese  */}
         <div className='flex flex-col items-center mt-10 w-full  justify-around  md:flex-row  md:justify-evenly md:items-start'>
           <WhyJapanese image={career} text="Widen your career prospects " />
-          <WhyJapanese image={culture} text="Get Closer to Japan's rich and unique culture" />
+          <WhyJapanese image={japaneseCulture} text="Get Closer to Japan's rich and unique culture" />
           <WhyJapanese image={music} text="Enjoy Japanese media firsthand" />
         </div>
       </div>
