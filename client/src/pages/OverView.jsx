@@ -27,7 +27,7 @@ const OverView = () => {
           STUDY DESK
         </div>
         <div className='w-[80vw] h-[70vh] bg-[#8b4513]/25 rounded-2xl shadow-xl hover:translate-z-10 transition-transform duration-300 shadow-[#8b4513] flex justify-center items-center'>
-          <button onClick={handleClick} className='p-3 border-4 text-2xl font-semibold border-[#b17144]  bg-[#ebd7d7da] rounded-3xl w-40 h-20 cursor-pointer'> Get Started</button>
+          <button onClick={handleClick} className='p-3 border-8 text-2xl font-semibold border-[#b17144]  bg-[#ebd7d7da] rounded-3xl w-50 h-20 cursor-pointer'> Get Started</button>
         </div>
       </div>
 
