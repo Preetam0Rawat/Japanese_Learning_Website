@@ -9,8 +9,8 @@ import progressPot from '../images/progressPot.png'
 import career from '../images/career.png'
 import music from '../images/music.png'
 import japaneseCulture from '../images/japaneseCulture.png'
-import Features from '../components/features'
-import WhyJapanese from '../components/WhyJapanese'
+import Features from '../components/features.jsx'
+import WhyJapanese from '../components/WhyJapanese.jsx'
 const OverView = () => {
 
   const navigate = useNavigate()
