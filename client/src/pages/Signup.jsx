@@ -48,10 +48,10 @@ const Signup = () => {
     <div className="relative w-full h-dvh overflow-hidden flex  justify-center items-center">
       <img src={signupBG} alt="background" className="absolute -z-10 inset-0 w-full h-full object-cover blur-sm" />
       <div className="relative w-[75vw] h-160 rounded-[90px] sm:w-[75vw] sm:h-170 sm:rounded-[50px] md:w-[50vw]   ">
-       
+
         <div className="absolute flex flex-col items-center inset-2 border-4 border-green-500  rounded-[90px]  px-10 py-8  sm:rounded-[120px] sm:px-20 sm:py-10 ">
-          
-          
+
+
           <h1 className='text-[40px] font-bold text-center'>SIGN UP</h1>
           <div className="flex flex-col items-center md:w-[45vw] w-[80vw] justify-evenly h-[70%] gap-3 mt-7">
             <input
@@ -105,7 +105,7 @@ const Signup = () => {
               Already a user? Sign In
             </Link>
 
-            \            <button
+            <button
               type="button"
               onClick={handleSignup}
               className="w-2/5 mt-8 py-3 bg-black text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition"
@@ -115,16 +115,16 @@ const Signup = () => {
           </div>
 
         </div>
-      
-      
+
+
       </div>
 
-        
-         <div className="absolute left-15 top-10 hidden sm:block">
-               <Link to="/home">
-                 <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
-               </Link>
-             </div>
+
+      <div className="absolute left-0 top-0 hidden sm:block">
+        <Link to="/home">
+          <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
+        </Link>
+      </div>
     </div>
 
   )

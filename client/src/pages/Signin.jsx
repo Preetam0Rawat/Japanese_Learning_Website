@@ -114,7 +114,7 @@ const Signin = () => {
 
 
       </div>
-         <div className="absolute left-15 top-10 hidden sm:block">
+         <div className="absolute left-0 top-0 hidden sm:block">
                <Link to="/home">
                  <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
                </Link>

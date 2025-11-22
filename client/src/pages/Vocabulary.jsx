@@ -17,12 +17,14 @@ const Vocabulary = () => {
   const jlptLevel = parseInt(searchParams.get("level")) || 5
   const currentPage = parseInt(searchParams.get("page")) || 1
   const limit = 6;
+  const [loading, setLoading] = useState(true);
 
 
 
   useEffect(() => {
     const fetchVocab = async () => {
       try {
+        setLoading(true);
         const response = await getVocabByLevel(jlptLevel, currentPage, limit);
         console.log("reached here")
         console.log(response.data.vocab)
@@ -30,6 +32,8 @@ const Vocabulary = () => {
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Error fetching kanjis:", error);
+      } finally {
+        setLoading(false); // stop loading
       }
     };
 
@@ -51,9 +55,15 @@ const Vocabulary = () => {
 
 
         <div className='sm:absolute w-[75%] top-[10%] left-[20%] text-center flex flex-col gap-3'>
-          {/* <div className='flex flex-col gap-3 bg-black'> */}
-            {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))}
-          {/* </div> */}
+          {loading ? (
+            <div className="flex justify-center  items-center w-full mt-30 p-5">
+              <p className="text-2xl mr-5">Fetching Data From Backend</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-black border-t-transparent "></div>
+            </div>
+          ) : (
+            vocab.map((v) => (<VocabLayout key={v._id} data={v} />))
+          )
+          }
         </div>
 
 
@@ -82,7 +92,7 @@ const Vocabulary = () => {
         </div>
       </div>
 
-        <div className="absolute left-15 top-10 hidden sm:block">
+      <div className="absolute left-0 top-0 hidden sm:block">
         <Link to="/home">
           <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
         </Link>
@@ -107,8 +117,17 @@ const Vocabulary = () => {
 
       <div className=' relative w-screen sm:hidden'>
         <div className='sm:absolute w-full'>
-          <div className='flex flex-col gap-3 bg-black'>
-            {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))}
+          <div className='flex flex-col gap-3'>
+            {/* {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))} */}
+            {loading ? (
+              <div className="flex justify-center items-center w-full h-full bg-white">
+                <p className="text-2xl mr-5">Fetching Data From Backend</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-black border-t-transparent"></div>
+              </div>
+            ) : (
+              vocab.map((v) => (<VocabLayout key={v._id} data={v} />))
+            )
+            }
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ const Progress = () => {
           <p className='bg-yellow-400 text-3xl p-5 border-2 border-white rounded-2xl mt-20 text-center'>Progress page development  is  pending. Developer is currently learning java/springboot</p>
         </div>
 
-        <div className="absolute left-15 top-10 hidden sm:block">
+        <div className="absolute left-0 top-0 hidden sm:block">
           <Link to="/home">
             <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
           </Link>

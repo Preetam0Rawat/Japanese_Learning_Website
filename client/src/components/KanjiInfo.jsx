@@ -131,7 +131,7 @@ const KanjiInfo = ({ info }) => {
             ${selected === status ? "bg-purple-500 text-white" : "bg-slate-700 text-white"}`}
           >
             <div
-              className={`w-2 h-2 lg:w-4 l:gh-4 rounded-full border-2 ${selected === status ? "border-white bg-black" : "border-gray-400 bg-white"
+              className={`w-2 h-2 lg:w-4  lg:h-4 rounded-full border-2 ${selected === status ? "border-white bg-black" : "border-gray-400 bg-white"
                 }`}
             ></div>
             <span>{status}</span>

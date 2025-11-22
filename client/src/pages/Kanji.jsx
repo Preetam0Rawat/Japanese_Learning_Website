@@ -27,6 +27,7 @@ const Kanji = () => {
     useEffect(() => {
         const fetchKanjis = async () => {
             try {
+                setLoading(true);
                 const response = await getKanjiByLevel(jlptLevel, currentPage, limit);
                 console.log("reached here")
                 setKanjis(response.data.kanjis);
@@ -87,7 +88,7 @@ const Kanji = () => {
 
 
 
-            <div className="absolute left-15 top-10 z-1 hidden sm:block">
+            <div className="absolute left-0 top-0 z-1 hidden sm:block">
                 <Link to="/home">
                     <FcUndo size={100} className=" transition-transform duration-200 hover:scale-120" />
                 </Link>
@@ -114,40 +115,41 @@ const Kanji = () => {
                 </div>
 
 
-                <div className='flex flex-col  flex-wrap h-screen  lg:absolute  lg:flex-row '>
+                <div className='flex flex-col  flex-wrap h-screen  lg:absolute  lg:flex-row lg:w-full'>
                     {/* left on desktop*/}
-                    <div className='flex flex-col mx-3 rounded-xl  h-[30%] overflow-y-scroll relative lg:w-[35%] lg:h-[75%] lg:left-[13%]  lg:top-[8%] 2xl:w-[40%] 2xl:h-[80%] 2xl:left-[13%]  2xl:top-[8%] bg-slate-600  lg:bg-transparent myScrollbar '>
-                        <h1 className='hidden lg:block text-white text-5xl text-center'>KANJI LIST - N{jlptLevel}</h1>
-                        <div className='flex flex-wrap justify-around p-4 gap-2 lg:gap-6 lg:mt-10 lg:ml-5 lg:mr-5 lg:h-160 '>
-                            {/* {kanjis.map((kanji) => (
+
+                    {loading ? (
+                        <div className="flex justify-center items-center lg:justify-end w-full  top-30 lg:w-[50vw] lg:h-screen ">
+                            <p className="text-3xl text-white mr-5">Loading Data From Backend</p>
+                            <div className="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+                        </div>
+                    ) : (
+                        <div className='flex flex-col mx-3 rounded-xl  h-[30%] overflow-y-scroll relative  lg:w-[35%] lg:h-[75%] lg:left-[13%]  lg:top-[8%] 2xl:w-[40%] 2xl:h-[80%] 2xl:left-[13%]  2xl:top-[8%] bg-slate-600  lg:bg-transparent myScrollbar '>
+                            <h1 className='hidden lg:block text-white text-5xl text-center'>KANJI LIST - N{jlptLevel}</h1>
+                            <div className='flex flex-wrap justify-around p-4 gap-2 lg:gap-6 lg:mt-10 lg:ml-5 lg:mr-5 lg:h-160  '>
+                                {/* {kanjis.map((kanji) => (
                                 <KanjiLayout key={kanji._id} data={kanji} onClick={() => handleKanjiClick(kanji._id)} />
                             ))
                             } */}
 
 
-                            
-                            {loading ? (
-                                <div className="flex justify-center items-center w-full h-full">
-                                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
-                                </div>
-                            ) : (
-                                kanjis.map((kanji) => (
+
+
+                                {kanjis.map((kanji) => (
                                     <KanjiLayout
                                         key={kanji._id}
                                         data={kanji}
                                         onClick={() => handleKanjiClick(kanji._id)}
                                     />
-                                ))
-                            )}
+                                ))}
 
 
-
-
-
-
-
+                            </div>
                         </div>
-                    </div>
+
+
+                       
+                    )}
 
                     {/* Pagination Controls - Mobile*/}
                     <div className="lg:hidden lg:absolute  w-full mt-1 lg:bottom-5   flex justify-center gap-3 lg:mt-10">
