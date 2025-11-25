@@ -104,7 +104,7 @@ const Vocabulary = () => {
         {[5, 4, 3, 2, 1].map((level) => (
           <button
             key={level}
-            className={`cursor-pointer font-semibold border-2 sm:border-4 w-15 h-15 rounded-4xl sm:w-20 sm:h-20 sm:text-xl sm:rounded-[35px]   ${jlptLevel === level
+            className={`cursor-pointer font-semibold border-2 sm:border-4 w-12 h-12 rounded-4xl sm:w-20 sm:h-20 sm:text-xl sm:rounded-[35px]   ${jlptLevel === level
               ? "bg-violet-600 text-white"
               : "bg-brown text-black hover:backdrop-brightness-50"
               }`}
@@ -121,8 +121,8 @@ const Vocabulary = () => {
             {/* {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))} */}
             {loading ? (
               <div className="flex justify-center items-center w-full h-full bg-white">
-                <p className="text-2xl mr-5">Fetching Data From Backend</p>
-                <div className="animate-spin rounded-full h-12 w-12 border-4 border-black border-t-transparent"></div>
+                <p className="text-xl lg:text-2xl mr-5">Fetching Data From Backend</p>
+                <div className="animate-spin rounded-full h-2 w-2 border-2 lg:h-12 lg:w-12 lg:border-4 border-black border-t-transparent"></div>
               </div>
             ) : (
               vocab.map((v) => (<VocabLayout key={v._id} data={v} />))
@@ -133,11 +133,6 @@ const Vocabulary = () => {
       </div>
 
 
-
-      {/* Add Status */}
-      <div className="absolute  top-1 right-1 bg-lime-600">
-
-      </div>
 
       {/* Pagination- for mobile */}
       <div className=" sm:hidden flex justify-center gap-4 mt-3">

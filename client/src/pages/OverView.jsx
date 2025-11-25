@@ -32,7 +32,7 @@ const OverView = () => {
       </div>
 
       <div className='  mt-20'>
-        <h1 className='text-center text-[clamp(12px,4vw,45px)] font-bold pt-6'>Why Our Site?</h1>
+        <h1 className='text-center text-[clamp(20px,4vw,45px)] font-bold pt-6'>Why Our Site?</h1>
         {/* We Offer */}
         <div className='flex flex-wrap justify-evenly gap-25 md:gap-30  mt-10'>
           <Features title='Kanji' image={kanji} text="With Study Desk, learn over 2,000 kanji, arranged neatly and categorized according to the five JLPT levels. These kanji are selected especially for daily life activities, with each kanji properly explained for better understanding."
@@ -49,7 +49,7 @@ const OverView = () => {
       </div>
 
       <div className='  mt-20'>
-        <h1 className='text-center text-[clamp(12px,4vw,45px)] font-bold pt-6'>Why Learn Japanese?</h1>
+        <h1 className='text-center text-[clamp(20px,4vw,45px)] font-bold pt-6'>Why Learn Japanese?</h1>
         {/* Why Japanese  */}
         <div className='flex flex-col items-center mt-10 w-full  justify-around  md:flex-row  md:justify-evenly md:items-start'>
           <WhyJapanese image={career} text="Widen your career prospects " />

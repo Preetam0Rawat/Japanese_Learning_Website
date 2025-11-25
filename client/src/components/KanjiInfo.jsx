@@ -68,7 +68,7 @@ const KanjiInfo = ({ info }) => {
     <div className='flex flex-col flex-wrap  text-black lg:rounded-2xl  lg:gap-4 lg:mx-auto'>
       
       {/* {info.kanji}{info.jlpt} */}
-      <div className='text-5xl my-6 lg:p-6 lg:rounded-lg  lg:text-8xl '>{info.kanji}</div>
+      <div className='text-5xl  mb-5 lg:p-6 lg:rounded-lg  lg:text-8xl '>{info.kanji}</div>
 
 
       <div className=' flex justify-between text-sm px-3 lg:p-5 font-semibold lg:text-xl lg:mt-5'>
