@@ -61,6 +61,9 @@ const VocabLayout = ({ data }) => {
     }
   }
 
+const meanings = data.meaning?.split(",").map(m => m.trim()) || [];
+  const firstMeaning = meanings[0];
+
 
   return (<>
     <div className='bg-[#cd853f] '>
@@ -76,7 +79,8 @@ const VocabLayout = ({ data }) => {
           {/*right sm:center */}
           <div className="flex flex-col flex-2 items-start">
             <p className="text-green-600 text-sm">JLPT: N{data.jlpt}</p>
-            <p className="text-gray-800 text-left">Meanings : {data.meaning}</p>
+            <p className="text-gray-800 ">Meanings : {data.meaning}</p>
+            
           </div>
 
         </div>
@@ -87,7 +91,7 @@ const VocabLayout = ({ data }) => {
             <div
               key={status}
               onClick={() => handleSelect(status)}
-              className={`sm:w-28 flex items-center gap-2 cursor-pointerpx-2 sm:py-1  rounded-full transition  cursor-pointer
+              className={`sm:w-28 flex px-1 items-center gap-2 cursor-pointerpx-2 sm:py-1  rounded-full transition  cursor-pointer
               ${selected === status ? "bg-[#cd853f] text-white" : "bg-[#cd853f]/40 text-white"}`}
             >
               <div

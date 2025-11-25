@@ -46,9 +46,10 @@ const Vocabulary = () => {
 
   return (
     <>
-      <div className='absolute -z-2 w-full h-dvh'>
-        <img src={tableBG} alt="table BG" className='object-fill w-full h-screen' />
+      <div className="fixed inset-0 -z-10">
+        <img src={tableBG} className="w-full h-full object-cover" />
       </div>
+
       <div className="absolute -z-1 hidden sm:block sm:left-[25%]  sm:w-[60%] xl:w-[800px] xl:left-[30%]  h-dvh">
         <img src={vocabBG} alt="notebook" className="w-full h-full" />
         <p className="absolute top-[5%] text-center text-3xl  w-full font-bold">Vocaublary JLPT-N{jlptLevel}</p>
@@ -98,9 +99,9 @@ const Vocabulary = () => {
         </Link>
       </div>
 
-      <h1 className="font-bold text-4xl text-center sm:hidden">VOCABULAY</h1>
+      <h1 className="font-bold text-3xl text-center sm:hidden">VOCABULAY</h1>
       {/* JLPT Levels buttons */}
-      <div className="justify-evenly w-full flex pt-6 pb-6 sm:absolute  sm:left-[10%] sm:top-40  sm:flex-col  sm:justify-center  sm:w-auto sm:gap-8 ">
+      <div className="justify-evenly w-full flex pt-4 pb-4 sm:absolute  sm:left-[10%] sm:top-40  sm:flex-col  sm:justify-center  sm:w-auto sm:gap-8 ">
         {[5, 4, 3, 2, 1].map((level) => (
           <button
             key={level}
@@ -115,7 +116,7 @@ const Vocabulary = () => {
         ))}
       </div>
 
-      <div className=' relative w-screen sm:hidden'>
+      <div className=' relative w-screen sm:hidden '>
         <div className='sm:absolute w-full'>
           <div className='flex flex-col gap-3'>
             {/* {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))} */}
@@ -125,38 +126,44 @@ const Vocabulary = () => {
                 <div className="animate-spin rounded-full h-2 w-2 border-2 lg:h-12 lg:w-12 lg:border-4 border-black border-t-transparent"></div>
               </div>
             ) : (
-              vocab.map((v) => (<VocabLayout key={v._id} data={v} />))
+              // vocab.map((v) => (<VocabLayout key={v._id} data={v} />))
+              <div className="flex flex-col gap-2">
+                {vocab.map((v) => (<VocabLayout key={v._id} data={v} />))}
+              </div>
             )
             }
           </div>
+          {/* Pagination- for mobile */}
+          <div className=" sm:hidden flex justify-center gap-4 mt-3">
+            <button
+              className="px-4 py-2 bg-[#A0522D]/90  rounded-lg disabled:opacity-40 font-semibold"
+              onClick={() => updateQuery(jlptLevel, currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
+
+            <span className="text-xl font-semibold text-black ">
+              Page {currentPage} / {totalPages}
+            </span>
+
+            <button
+              className="px-4 py-2 bg-[#A0522D]/90  cursor-pointer   rounded-lg disabled:opacity-40 font-semibold"
+              onClick={() => updateQuery(jlptLevel, currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+
+          </div>
+
         </div>
-      </div>
-
-
-
-      {/* Pagination- for mobile */}
-      <div className=" sm:hidden flex justify-center gap-4 mt-3">
-        <button
-          className="px-4 py-2 bg-[#A0522D]/90  rounded-lg disabled:opacity-40 font-semibold"
-          onClick={() => updateQuery(jlptLevel, currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-
-        <span className="text-xl font-semibold text-black ">
-          Page {currentPage} / {totalPages}
-        </span>
-
-        <button
-          className="px-4 py-2 bg-[#A0522D]/90  cursor-pointer   rounded-lg disabled:opacity-40 font-semibold"
-          onClick={() => updateQuery(jlptLevel, currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
 
       </div>
+
+
+
+
     </>
   )
 }
