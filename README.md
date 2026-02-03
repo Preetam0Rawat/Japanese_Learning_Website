@@ -13,7 +13,7 @@ Built with a modern production setup using Spring Boot (backend) and Vite + Reac
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React (Vite)
