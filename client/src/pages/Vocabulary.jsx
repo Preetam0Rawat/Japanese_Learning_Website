@@ -26,8 +26,6 @@ const Vocabulary = () => {
       try {
         setLoading(true);
         const response = await getVocabByLevel(jlptLevel, currentPage, limit);
-        console.log("reached here")
-        console.log(response.data.vocab)
         setVocab(response.data.vocab);
         setTotalPages(response.data.totalPages);
       } catch (error) {

@@ -61,8 +61,6 @@ const VocabLayout = ({ data }) => {
     }
   }
 
-const meanings = data.meaning?.split(",").map(m => m.trim()) || [];
-  const firstMeaning = meanings[0];
 
 
   return (<>

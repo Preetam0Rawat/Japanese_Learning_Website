@@ -187,6 +187,7 @@ export const updateProgressStatus = async (req, res) => {
   }
 };
 
+
 export const getProgressOfStudent = async(req, res) =>{
      try {
     const { studentId } = req.params;

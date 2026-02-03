@@ -13,7 +13,9 @@ const ItemCount = () => {
     const token = localStorage.getItem("token")
 
     useEffect(()=>{
-        getNumber()
+        if(token){
+            getNumber()
+        }
     },[])
 
     const getNumber = async () => {

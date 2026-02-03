@@ -29,7 +29,6 @@ const Kanji = () => {
             try {
                 setLoading(true);
                 const response = await getKanjiByLevel(jlptLevel, currentPage, limit);
-                console.log("reached here")
                 setKanjis(response.data.kanjis);
                 setTotalPages(response.data.totalPages);
             } catch (error) {
